@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title%}Manager Dashboard{% endblock %}
+{% block nav %}
+    {% include 'navbars/manager_navbar.html' %}
+{% endblock %}
+{% block content %}
+<h1>Tasks List</h1>
+    <ul>
+        {% for task in tasks %}
+            <li><a href="{% url 'task_detail' pk=task.id %}">{{ task.title }}</a> with status: {{ task.status }}, and assigned to {{ task.assigned_to.name }}</li>
+        {% empty %}
+        <li>No tasks available.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

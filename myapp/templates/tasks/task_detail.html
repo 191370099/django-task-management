@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title%}Tasks Detail{% endblock %}
+{% block nav %}
+    {% include 'navbars/manager_navbar.html' %}
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h3 class="text-center">{{ task.title }}</h3>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Assigned To:</strong> {{ task.assigned_to.name }}</p>
+                        <p><strong>Assigned By:</strong> {{ task.assigned_by.name }}</p>
+                        <p><strong>Status:</strong> {{ task.status }}</p>
+                        <p><strong>Description:</strong> {{ task.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title%}Add Tasks{% endblock %}
+{% block nav %}
+    {% include 'navbars/manager_navbar.html' %}
+{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Add Task</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="mb-3">
+            <label for="assigned_to" class="form-label">Assigned To</label>
+            <select class="form-select" id="assigned_to" name="assigned_to" required>
+                <option value="" selected disabled>Select a developer</option>
+                {% for developer in developers %}
+                    <option value="{{ developer.id }}">{{ developer.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Task</button>
+    </form>
+</div>
+{% endblock %}
